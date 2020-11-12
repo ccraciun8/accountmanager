@@ -18,12 +18,12 @@ public class AccountController {
 	@Autowired
 	private AccountRepository accountRepository;
 
-	@GetMapping("/")
+	@GetMapping()
 	public List<Account> getAllAccounts(){
 		return accountRepository.findAll();
 	}
 	
-	@PostMapping("/")
+	@PostMapping()
 	public Account createAccount(@RequestBody Account account) {
 		return accountRepository.save(account);
 	}
