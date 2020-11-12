@@ -1,0 +1,17 @@
+
+server:
+  port: 8081
+spring:
+  datasource:
+    url: jdbc:postgresql://${POSTGRES_DB_SERVER}:5432/${POSTGRES_DB}?createDatabaseIfNotExist=true
+    username: ${POSTGRES_USER}
+    password: ${POSTGRES_PASSWORD}
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQL92Dialect
+        jdbc:
+          lob:
+            non_contextual_creation: true
+    hibernate:
+      ddl-auto: create-drop

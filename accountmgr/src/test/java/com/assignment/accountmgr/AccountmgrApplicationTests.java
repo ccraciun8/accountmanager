@@ -1,13 +1,17 @@
 package com.assignment.accountmgr;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class AccountmgrApplicationTests {
+public class AccountmgrApplicationTests {
 
+	public AccountmgrApplicationTests() {
+		// TODO Auto-generated constructor stub
+	}
+	
 	@Test
-	void contextLoads() {
+	public void contextLoads() {
 	}
 
 }
