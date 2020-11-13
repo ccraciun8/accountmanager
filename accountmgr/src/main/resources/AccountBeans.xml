@@ -8,10 +8,12 @@
     <bean class="com.assignment.accountmgr.Account" id="firstAccount">
         <property name="customerId" value="1"></property>
         <property name="balance" value="2"></property>
+        <property name="createdOn" value="13/11/2020 14:10:23"></property>
     </bean>
     
     <bean class="com.assignment.accountmgr.Account" id="secondAccount">
         <property name="customerId" value="2"></property>
         <property name="balance" value="0"></property>
+        <property name="createdOn" value="12/11/2020 09:52:14"></property>
     </bean>
 </beans>

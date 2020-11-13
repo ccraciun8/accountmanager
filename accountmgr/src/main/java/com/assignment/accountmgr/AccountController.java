@@ -1,5 +1,6 @@
 package com.assignment.accountmgr;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,8 +24,21 @@ public class AccountController {
 		return accountRepository.findAll();
 	}
 	
+	private void validateDate(Date sqlDate) {
+		
+	}
+	private void validateNoAccounts(Account account) {
+		
+	}
+	
 	@PostMapping()
 	public Account createAccount(@RequestBody Account account) {
+		Date date = new Date(System.currentTimeMillis());
+		
+		this.validateDate(date);
+		this.validateNoAccounts(account);
+		
+		account.setCreatedOn(date);
 		return accountRepository.save(account);
 	}
 	

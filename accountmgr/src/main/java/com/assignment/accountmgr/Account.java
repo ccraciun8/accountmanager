@@ -1,11 +1,17 @@
 package com.assignment.accountmgr;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Table(name = "accounts")
@@ -22,6 +28,11 @@ public class Account {
 	@Column(name = "balance")
 	private long balance;
 
+	@DateTimeFormat(pattern="dd/MM/yyyy hh:mm:ss")
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "created_on")
+	private Date createdOn;
+	
 	public long getId() {
 		return id;
 	}
@@ -44,5 +55,13 @@ public class Account {
 
 	public void setBalance(long balance) {
 		this.balance = balance;
+	}
+
+	public Date getCreatedOn() {
+		return createdOn;
+	}
+
+	public void setCreatedOn(Date createdOn) {
+		this.createdOn = createdOn;
 	}
 }
