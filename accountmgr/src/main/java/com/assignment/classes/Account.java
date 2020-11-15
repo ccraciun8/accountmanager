@@ -1,4 +1,4 @@
-package com.assignment.accountmgr;
+package com.assignment.classes;
 
 import java.util.Date;
 
@@ -16,6 +16,17 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Entity
 @Table(name = "accounts")
 public class Account {
+
+	public Account() {
+		
+	}
+	
+	public Account(long customerId, long balance, Date createdOn) {
+		super();
+		this.customerId = customerId;
+		this.balance = balance;
+		this.createdOn = createdOn;
+	}
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)

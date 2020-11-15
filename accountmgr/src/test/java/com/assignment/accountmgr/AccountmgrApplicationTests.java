@@ -7,7 +7,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 public class AccountmgrApplicationTests {
 
 	public AccountmgrApplicationTests() {
-		// TODO Auto-generated constructor stub
 	}
 	
 	@Test

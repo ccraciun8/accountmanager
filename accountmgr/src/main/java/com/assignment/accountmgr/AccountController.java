@@ -1,6 +1,5 @@
 package com.assignment.accountmgr;
 
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,41 +11,28 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.assignment.classes.Account;
+
 @RestController
 @RequestMapping("/accounts")
 public class AccountController {
 
 	@Autowired
-	private AccountRepository accountRepository;
+	private AccountService accountService;
 
 	@GetMapping()
 	public List<Account> getAllAccounts(){
-		return accountRepository.findAll();
-	}
-	
-	private void validateDate(Date sqlDate) {
-		
-	}
-	private void validateNoAccounts(Account account) {
-		
+		return accountService.getAllAccounts();
 	}
 	
 	@PostMapping()
 	public Account createAccount(@RequestBody Account account) {
-		Date date = new Date(System.currentTimeMillis());
-		
-		this.validateDate(date);
-		this.validateNoAccounts(account);
-		
-		account.setCreatedOn(date);
-		return accountRepository.save(account);
+		return accountService.createAccount(account);
 	}
 	
 	@GetMapping("/{id}")
 	public ResponseEntity<Account> getAccount(@PathVariable(value="id") Long id) throws Exception{
-		Account account = accountRepository.findById(id).orElseThrow( () ->
-			new Exception("Could not find account for id " + id.toString())
-		);
+		Account account = accountService.getAccountById(id);
 		return ResponseEntity.ok().body(account);
 	}
 }
