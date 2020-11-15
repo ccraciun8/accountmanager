@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.assignment.classes.Account;
+import com.assignment.utils.AccountUtils;
 
 @Service
 public class AccountService {
@@ -22,22 +23,21 @@ public class AccountService {
 		return accountRepository.findAll();
 	}
 	
-	private void validateDate(Date date) {
+	private Account addAccountWithDate(Account account, Date date) throws Exception {
+		Long customerId = account.getCustomerId();
+		List<Account> currentCustomerAccounts = accountRepository.findAccountsForCustomerId(customerId);
 		
-	}
-	private void validateNoAccounts(Account account) {
+		// check that the provided account and date are valid.
+		AccountUtils.validateAccountOpenDate(date);
+		AccountUtils.validateUserCanCreateAccount(account.getCustomerId(), account, currentCustomerAccounts);
 		
-	}
-	
-	private Account addAccountWithDate(Account account, Date date) {
-		this.validateDate(date);
-		this.validateNoAccounts(account);
-		
+		// set the correct create date on the account and save it in the database
+		// the saved account will be returned to the user.
 		account.setCreatedOn(date);
 		return accountRepository.save(account);
 	}
 	
-	public Account createAccount(Account account) {
+	public Account createAccount(Account account) throws Exception{
 		Date date = new Date(System.currentTimeMillis());
 		return addAccountWithDate(account, date);
 	}
