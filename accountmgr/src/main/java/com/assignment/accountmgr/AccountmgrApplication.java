@@ -10,6 +10,7 @@ import org.springframework.context.event.EventListener;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.assignment.classes.Account;
+import com.assignment.classes.User;
 
 @SpringBootApplication
 @EntityScan("com.assignment.classes")
@@ -18,6 +19,9 @@ public class AccountmgrApplication {
 	@Autowired
     private AccountRepository accountRepository;
 	
+	@Autowired
+	private UserRepository userRepository;
+		
 	public static void main(String[] args) {
 		SpringApplication.run(AccountmgrApplication.class, args);
 	}
@@ -31,6 +35,14 @@ public class AccountmgrApplication {
 		
 		accountRepository.save(firstAccount);
 		accountRepository.save(secondAccount);
+		
+		ApplicationContext userContext = new ClassPathXmlApplicationContext("UserBeans.xml");
+		
+		User firstUser = (User)userContext.getBean("firstUser");
+		User secondUser = (User)userContext.getBean("secondUser");
+		
+		userRepository.save(firstUser);
+		userRepository.save(secondUser);
     }
 	
 }
