@@ -6,35 +6,31 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
 
 @Entity
-@Table(name = "users")
-public class User {
+@Table(name = "user_roles")
+public class UserRole {
 
-	public User() {
+	public UserRole() {
 	}
 	
-	public User(String username, String password) {
+	public UserRole(String username, String role) {
 		super();
 		this.username = username;
-		this.password = password;
+		this.role = role;
 	}
-
+	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name = "id")
 	private long id;
 	
-	@Column(name = "username", nullable = false)
+	@Column(name = "username")
 	private String username;
 	
-	@Column(name = "password", nullable = false)
-	private String password;
+	@Column(name = "role")
+	private String role;
 
-	@Column(name = "enabled", nullable = false)
-	private boolean enabled;
-	
 	public long getId() {
 		return id;
 	}
@@ -42,7 +38,7 @@ public class User {
 	public void setId(long id) {
 		this.id = id;
 	}
-
+	
 	public String getUsername() {
 		return username;
 	}
@@ -51,19 +47,11 @@ public class User {
 		this.username = username;
 	}
 
-	public String getPassword() {
-		return password;
+	public String getRole() {
+		return role;
 	}
 	
-	public void setPassword(String password) {
-		this.password = password;
-	}
-	
-	public boolean getEnabled() {
-		return enabled;
-	}
-	
-	public void setEnabled(boolean enabled) {
-		this.enabled = enabled;
+	public void setRole(String role) {
+		this.role = role;
 	}
 }

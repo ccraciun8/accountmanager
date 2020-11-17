@@ -1,6 +1,20 @@
 version: '3'
 
 services:
+  app-ui:
+    container_name: app-ui
+    build: ./ui
+    ports:
+      - "8080:8080"
+    depends_on:
+      - app-accountmanager
+      - postgres
+    environment:
+      - POSTGRES_DB_SERVER=postgres
+      - POSTGRES_DB=accounts
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=password
+
   app-accountmanager:
     container_name: app-accountmanager
     build: ./accountmgr

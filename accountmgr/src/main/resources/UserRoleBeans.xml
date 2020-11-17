@@ -5,21 +5,18 @@
     xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
     http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
     
-    <bean class="com.assignment.classes.User" id="firstUser">
+    <bean class="com.assignment.classes.UserRole" id="firstUserRole">
         <property name="username" value="user1"></property>
-        <property name="password" value="{noop}password"></property>
-        <property name="enabled" value="1"></property>
+        <property name="role" value="ROLE_USER"></property>
     </bean>
     
-    <bean class="com.assignment.classes.User" id="secondUser">
+    <bean class="com.assignment.classes.UserRole" id="secondUserRole">
         <property name="username" value="user2"></property>
-        <property name="password" value="{noop}password"></property>
-        <property name="enabled" value="1"></property>
+        <property name="role" value="ROLE_USER"></property>
     </bean>
     
-    <bean class="com.assignment.classes.User" id="thirdUser">
+    <bean class="com.assignment.classes.UserRole" id="thirdUserRole">
         <property name="username" value="user3"></property>
-        <property name="password" value="{noop}password"></property>
-        <property name="enabled" value="1"></property>
+        <property name="role" value="ROLE_USER"></property>
     </bean>
 </beans>

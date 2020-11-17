@@ -11,6 +11,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.assignment.classes.Account;
 import com.assignment.classes.User;
+import com.assignment.classes.UserRole;
 
 @SpringBootApplication
 @EntityScan("com.assignment.classes")
@@ -21,6 +22,9 @@ public class AccountmgrApplication {
 	
 	@Autowired
 	private UserRepository userRepository;
+	
+	@Autowired
+	private UserRoleRepository userRoleRepository;
 		
 	public static void main(String[] args) {
 		SpringApplication.run(AccountmgrApplication.class, args);
@@ -28,21 +32,37 @@ public class AccountmgrApplication {
 	
     @EventListener
     public void appReady(ApplicationReadyEvent event) {
-    	ApplicationContext context = new ClassPathXmlApplicationContext("AccountBeans.xml");
-		
-		Account firstAccount = (Account)context.getBean("firstAccount");
-		Account secondAccount = (Account)context.getBean("secondAccount");
-		
-		accountRepository.save(firstAccount);
-		accountRepository.save(secondAccount);
-		
-		ApplicationContext userContext = new ClassPathXmlApplicationContext("UserBeans.xml");
+    	// add the users
+    	ApplicationContext userContext = new ClassPathXmlApplicationContext("UserBeans.xml");
 		
 		User firstUser = (User)userContext.getBean("firstUser");
 		User secondUser = (User)userContext.getBean("secondUser");
+		User thirdUser = (User)userContext.getBean("thirdUser");
 		
 		userRepository.save(firstUser);
 		userRepository.save(secondUser);
+		userRepository.save(thirdUser);
+		
+		// add the user roles
+		ApplicationContext userRoleContext = new ClassPathXmlApplicationContext("UserRoleBeans.xml");
+		
+		UserRole firstRole = (UserRole)userRoleContext.getBean("firstUserRole");
+		UserRole secondRole = (UserRole)userRoleContext.getBean("secondUserRole");
+		UserRole thirdRole = (UserRole)userRoleContext.getBean("thirdUserRole");
+		
+		userRoleRepository.save(firstRole);
+		userRoleRepository.save(secondRole);
+		userRoleRepository.save(thirdRole);
+		
+    	// add the first accounts
+    	ApplicationContext context = new ClassPathXmlApplicationContext("AccountBeans.xml");
+		
+		Account firstAccount = (Account)context.getBean("firstAccount");
+		//Account secondAccount = (Account)context.getBean("secondAccount");
+		
+		accountRepository.save(firstAccount);
+		//accountRepository.save(secondAccount);
+		
     }
 	
 }
