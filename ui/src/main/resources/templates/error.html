@@ -8,5 +8,6 @@
 <body>
 	<div sec:authorize="isAuthenticated()">Authenticated as <span sec:authentication="name"></span></div>
 	<h1>An error appeared.</h1>
+	<a style="color: blue" th:href="@{/account}">Go back to the account page.</a>
 </body>
 </html>

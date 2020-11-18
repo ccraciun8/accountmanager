@@ -16,7 +16,8 @@
 </head>
 <body>
 	<div sec:authorize="isAuthenticated()">Authenticated as <span sec:authentication="name"></span></div>
-	<h1>Existing accounts for the currently logged on user:</h1>
+	<a style="color: blue" th:href="@{/logout}">Log out</a>
+	<h1>Existing accounts for <span sec:authentication="name"></span></h1>
 		<table>
 			<tr>
 				<th>Account Id </th>
@@ -31,9 +32,11 @@
 	        </tr>
 	    </table>
 	<h1>Create a new account</h1>
+	<h2>Currently there is a limit of 5 accounts per user. This number is configurable from the AccountUtils class in the accountmgr solution.</h2>
     <form action="#" th:action="@{/account}" th:object="${account}" method="post">
         <p>Initial Balance: <input type="text" th:field="*{balance}" /></p>
-        <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+        <p><input type="submit" value="Submit" /></p>
     </form>
+    
 </body>
 </html>
