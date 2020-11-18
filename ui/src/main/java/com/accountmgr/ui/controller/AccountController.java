@@ -28,28 +28,33 @@ public class AccountController {
     
     @GetMapping(value="/account")
     public String account(Model model) {
-      model.addAttribute("account", new Account());
-      model.addAttribute("accounts", restService.getAccounts());
-      model.addAttribute("error", "");
-      return "account";
+		// Set all the accounts that correspond to the currently logged user
+		// Also, reset the error field to empty
+		model.addAttribute("account", new Account());
+		model.addAttribute("accounts", restService.getAccounts());
+		model.addAttribute("error", "");
+		return "account";
     }
 
     @PostMapping("/account")
     public String acocountSubmit(@ModelAttribute Account account, Model model) throws Exception {
-      String error = "";
-      try {
-    	  restService.addAccount(account);  
-      }
-      catch(Exception ex) {
-    	  error = ex.getMessage();
-      }
-      model.addAttribute("error", error);
-      model.addAttribute("account", account);
-      model.addAttribute("accounts", restService.getAccounts());
-      return "account";
+		String error = "";
+		try {
+			// Add the new account in the database
+			restService.addAccount(account);  
+		}
+		catch(Exception ex) {
+			// In case of error the message will appear under the 'Submit' button.
+			error = ex.getMessage();
+		}
+		model.addAttribute("error", error);
+		model.addAttribute("account", account);
+		model.addAttribute("accounts", restService.getAccounts());
+		return "account";
     }
     
     private List<Account> getAccounts() {
+    	// Retrieve all the accounts that correspond to the user that is currently logged on.
     	return this.restService.getAccounts();
     }
 
