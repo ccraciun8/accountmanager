@@ -1,5 +1,11 @@
 package com.accountmgr.ui.model;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
 public class Account {
 
 	public Account() {
@@ -48,4 +54,11 @@ public class Account {
 		this.createdOn = createdOn;
 	}
 
+	public String getFormattedDate() throws ParseException {
+		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ");
+		Date date = dateFormat.parse(getCreatedOn());
+		
+		DateFormat newDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		return newDateFormat.format(date);
+	}
 }

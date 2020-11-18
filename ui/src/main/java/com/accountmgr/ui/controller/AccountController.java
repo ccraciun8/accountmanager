@@ -30,13 +30,20 @@ public class AccountController {
     public String account(Model model) {
       model.addAttribute("account", new Account());
       model.addAttribute("accounts", restService.getAccounts());
+      model.addAttribute("error", "");
       return "account";
     }
 
     @PostMapping("/account")
     public String acocountSubmit(@ModelAttribute Account account, Model model) throws Exception {
-      restService.addAccount(account);
-      
+      String error = "";
+      try {
+    	  restService.addAccount(account);  
+      }
+      catch(Exception ex) {
+    	  error = ex.getMessage();
+      }
+      model.addAttribute("error", error);
       model.addAttribute("account", account);
       model.addAttribute("accounts", restService.getAccounts());
       return "account";

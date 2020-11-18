@@ -8,6 +8,7 @@ import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 
 import com.accountmgr.ui.model.Account;
@@ -60,7 +61,12 @@ public class RestService {
 			throw new Exception("Failed to add a new account. Error: " + e.getMessage());
 		}
     	
-    	this.restTemplate.postForObject(getAccountMgrUrl(), map, HashMap.class, new HashMap<String, Object>());
+    	try{
+    		this.restTemplate.postForObject(getAccountMgrUrl(), map, HashMap.class, new HashMap<String, Object>());
+    	}
+    	catch(RestClientException ex) {
+    		throw new Exception(ex.getMessage());
+    	}
     }
     
     private String getUsername() {

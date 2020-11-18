@@ -4,38 +4,41 @@
 	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
 	<title>Account Manager</title>
-	<style>
-		table, th, td {
-		  border: 1px solid black;
-		}
-		
-		table {
-		  width: 100%;
-		}
-	</style>
+	<link rel="stylesheet" href="style/style.css">
 </head>
 <body>
-	<div sec:authorize="isAuthenticated()">Authenticated as <span sec:authentication="name"></span></div>
-	<a style="color: blue" th:href="@{/logout}">Log out</a>
-	<h1>Existing accounts for <span sec:authentication="name"></span></h1>
-		<table>
+	<div class="title-div">
+		<div class="text app-title-div">
+			<p>Account Manager UI</p>
+		</div>
+		<div class="text right-div" sec:authorize="isAuthenticated()">
+			<div>
+			Authenticated as <span sec:authentication="name"></span>
+			</div>
+			<div>
+				<a class="text link" th:href="@{/logout}">Log out</a>
+			</div>
+		</div>
+	</div>
+	<h1 class="text" >Existing accounts for <span sec:authentication="name"></span></h1>
+		<table class="text" >
 			<tr>
 				<th>Account Id </th>
 				<th>Balance</th>
 				<th>Created On</th> 
 			</tr>
-	
 	        <tr th:each="account,iterationstatus :${accounts}">
 	            <td th:text="${account.id}"> Account Id</td>
 	            <td th:text="${account.balance}"> Balance</td>
-	            <td th:text="${account.createdOn}"> Created On </td>
+	            <td th:text="${account.getFormattedDate()}"> Created On </td>
 	        </tr>
 	    </table>
-	<h1>Create a new account</h1>
-	<h2>Currently there is a limit of 5 accounts per user. This number is configurable from the AccountUtils class in the accountmgr solution.</h2>
+	<h1 class="text">Create a new account</h1>
+	<h2 class="text" >Currently there is a limit of 5 accounts per user. This number is configurable from the AccountUtils class in the accountmgr solution.</h2>
     <form action="#" th:action="@{/account}" th:object="${account}" method="post">
-        <p>Initial Balance: <input type="text" th:field="*{balance}" /></p>
-        <p><input type="submit" value="Submit" /></p>
+        <p class="text" >Initial Balance: <input type="text" th:field="*{balance}" /></p>
+        <p><input type="submit" value="Submit" class="button"/></p>
+        <p class="text error-message" th:text="${error}"></p> 
     </form>
     
 </body>

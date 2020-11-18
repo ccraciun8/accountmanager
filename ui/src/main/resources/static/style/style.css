@@ -1,0 +1,59 @@
+.text {
+	font-family: calibri;
+}
+
+.error-message{
+	color: red;
+}
+
+.title-div{
+	display: flex;
+	width: 100%;
+	background-color: lightgrey;
+}
+
+.app-title-div{
+	width: 100%;
+	padding-left: 50px;
+	vertical-align: middle;
+	font-weight: bold;
+    font-size: 20px;
+}
+
+.right-div{
+	width: 250px;
+	text-align: right;
+	padding-right: 3px;
+}
+
+h1 {
+	font-size: 18px;
+	color: darkblue;
+}
+
+h2 {
+	font-size: 14px;
+	color: darkblue;
+}
+
+table {
+	border: 1px solid;
+	border-color: black;
+	width: 100%;
+}
+
+th {
+	background-color: lightblue;
+}
+
+td {
+	text-align: center;
+}
+
+.button{
+	background-color:lightgrey;
+}
+
+a:hover {
+  font-style: underline;
+}
