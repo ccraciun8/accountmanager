@@ -5,16 +5,16 @@
     xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
     http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
     
-    <bean class="com.assignment.classes.Account" id="firstAccount">
+    <bean class="com.assignment.accountmgr.classes.Account" id="firstAccount">
         <property name="customerId" value="1"></property>
         <property name="balance" value="2"></property>
         <property name="createdOn" value="11/08/2020 14:10:23"></property>
     </bean>
-    <!-- 
-	    <bean class="com.assignment.classes.Account" id="secondAccount">
-	        <property name="customerId" value="2"></property>
-	        <property name="balance" value="0"></property>
-	        <property name="createdOn" value="12/11/2020 09:52:14"></property>
-	    </bean>
-     -->
+     
+    <bean class="com.assignment.accountmgr.classes.Account" id="secondAccount">
+        <property name="customerId" value="2"></property>
+        <property name="balance" value="0"></property>
+        <property name="createdOn" value="12/11/2020 09:52:14"></property>
+    </bean>
+   
 </beans>

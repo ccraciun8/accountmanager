@@ -1,4 +1,4 @@
-package com.assignment.accountmgr;
+package com.assignment.accountmgr.controller;
 
 import java.util.List;
 import java.util.Map;
@@ -15,8 +15,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
-import com.assignment.classes.Account;
-import com.assignment.classes.User;
+import com.assignment.accountmgr.classes.Account;
+import com.assignment.accountmgr.classes.User;
+import com.assignment.accountmgr.service.AccountService;
+import com.assignment.accountmgr.service.UserService;
 
 @RestController
 @RequestMapping("/accounts")

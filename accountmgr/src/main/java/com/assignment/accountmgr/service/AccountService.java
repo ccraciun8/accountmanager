@@ -1,4 +1,4 @@
-package com.assignment.accountmgr;
+package com.assignment.accountmgr.service;
 
 import java.util.Date;
 import java.util.List;
@@ -6,8 +6,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.assignment.classes.Account;
-import com.assignment.utils.AccountUtils;
+import com.assignment.accountmgr.classes.Account;
+import com.assignment.accountmgr.repository.AccountRepository;
+import com.assignment.accountmgr.utils.AccountUtils;
 
 @Service
 public class AccountService {

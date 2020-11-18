@@ -9,12 +9,15 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.event.EventListener;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.assignment.classes.Account;
-import com.assignment.classes.User;
-import com.assignment.classes.UserRole;
+import com.assignment.accountmgr.classes.Account;
+import com.assignment.accountmgr.classes.User;
+import com.assignment.accountmgr.classes.UserRole;
+import com.assignment.accountmgr.repository.AccountRepository;
+import com.assignment.accountmgr.repository.UserRepository;
+import com.assignment.accountmgr.repository.UserRoleRepository;
 
 @SpringBootApplication
-@EntityScan("com.assignment.classes")
+@EntityScan("com.assignment.accountmgr.classes")
 public class AccountmgrApplication {
 
 	@Autowired
@@ -54,14 +57,14 @@ public class AccountmgrApplication {
 		userRoleRepository.save(secondRole);
 		userRoleRepository.save(thirdRole);
 		
-    	// add the first accounts
+    	// add the accounts
     	ApplicationContext context = new ClassPathXmlApplicationContext("AccountBeans.xml");
 		
 		Account firstAccount = (Account)context.getBean("firstAccount");
-		//Account secondAccount = (Account)context.getBean("secondAccount");
+		Account secondAccount = (Account)context.getBean("secondAccount");
 		
 		accountRepository.save(firstAccount);
-		//accountRepository.save(secondAccount);
+		accountRepository.save(secondAccount);
 		
     }
 	

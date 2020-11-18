@@ -1,4 +1,4 @@
-package com.assignment.classes;
+package com.assignment.accountmgr.classes;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

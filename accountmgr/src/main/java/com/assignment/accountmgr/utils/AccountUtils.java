@@ -1,10 +1,10 @@
-package com.assignment.utils;
+package com.assignment.accountmgr.utils;
 
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-import com.assignment.classes.Account;
+import com.assignment.accountmgr.classes.Account;
 
 public class AccountUtils {
 	

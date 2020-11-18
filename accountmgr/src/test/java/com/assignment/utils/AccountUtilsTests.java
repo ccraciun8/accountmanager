@@ -1,7 +1,5 @@
 package com.assignment.utils;
 
-import com.assignment.classes.Account;
-
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
@@ -15,6 +13,9 @@ import java.util.List;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.junit4.SpringRunner;
+
+import com.assignment.accountmgr.classes.Account;
+import com.assignment.accountmgr.utils.AccountUtils;
 
 
 @RunWith(SpringRunner.class)

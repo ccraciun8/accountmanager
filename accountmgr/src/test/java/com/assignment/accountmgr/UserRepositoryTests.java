@@ -14,9 +14,10 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.assignment.classes.Account;
-import com.assignment.classes.User;
-import com.assignment.utils.AccountUtils;
+import com.assignment.accountmgr.classes.Account;
+import com.assignment.accountmgr.classes.User;
+import com.assignment.accountmgr.repository.UserRepository;
+import com.assignment.accountmgr.utils.AccountUtils;
 
 @RunWith(SpringRunner.class)
 @DataJpaTest
