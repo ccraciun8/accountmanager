@@ -14,3 +14,5 @@ spring:
             non_contextual_creation: true
     hibernate:
       ddl-auto: create-drop
+  resources:
+    add-mappings: true

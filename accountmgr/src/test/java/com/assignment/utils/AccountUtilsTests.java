@@ -173,8 +173,11 @@ public class AccountUtilsTests {
 		Date date2 = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss").parse(sDate1);
 		
 		Account account = new Account(userId, 0, date1);
-		Account account2 = new Account(userId, 0, date2);
-		List<Account> userAccounts = Arrays.asList(account2);
+		
+		List<Account> userAccounts = new ArrayList<Account>();
+		for (int i = 0; i < AccountUtils.MAX_NO_ACCOUNTS_PER_USER; i++) {
+			userAccounts.add(new Account(userId, 0, date2));
+		}
 		AccountUtils.validateUserCanCreateAccount(userId, account, userAccounts);
 	}
 	

@@ -8,6 +8,13 @@ import com.assignment.classes.Account;
 
 public class AccountUtils {
 	
+	public final static int WORKING_HOURS_START = 9; //star of working hours
+	public final static int WORKING_HOURS_STOP = 17; //end of working hours
+	
+	// the requirement was for a max of 1 account per user. 
+	//Currently enabling 5 accounts for debugging the framework
+	public final static int MAX_NO_ACCOUNTS_PER_USER = 5; 
+			
 	// helper method to compare two accounts.
 	public static boolean compareAccounts(Account acc1, Account acc2) {
 		if (acc1.getId() != acc2.getId()) {
@@ -28,7 +35,8 @@ public class AccountUtils {
 	// validate that an account can be opened at the given date
 	// enforced rules - the day must be between Monday-Friday, and the hour between 09-17.
 	public static void validateAccountOpenDate(Date date) throws Exception {
-		String workingHoursMessage = "Accounts can only be opened from Monday to Friday, during working hours: 09-17.";
+		String workingWours = WORKING_HOURS_START + "-" + WORKING_HOURS_STOP + ".";
+		String workingHoursMessage = "Accounts can only be opened from Monday to Friday, during working hours: " + workingWours;
 	    Calendar cal = Calendar.getInstance();
 	    // set the input date in a calendar instance, in order to retrieve current day and hour
 	    cal.setTime(date);
@@ -41,7 +49,7 @@ public class AccountUtils {
 	    if (dayOfWeek == 1 || dayOfWeek == 7) {
 	    	throw new Exception("Accounts cannot be opened on weekends. " + workingHoursMessage);
 	    }
-	    if (hourOfDay < 9 || hourOfDay >= 17) {
+	    if (hourOfDay < WORKING_HOURS_START || hourOfDay >= WORKING_HOURS_STOP) {
 	    	throw new Exception("Accounts cannot be opened outside of working hours. " + workingHoursMessage);
 	    }
 	    
@@ -63,8 +71,8 @@ public class AccountUtils {
 			}
 		}
 		
-		if (currentUsersAccounts.size() > 0) {
-			throw new Exception("The current user (id " + userId + ") already has " + currentUsersAccounts.size() + " opened accounts. A user can currently only have one account.");
+		if (currentUsersAccounts.size() >= MAX_NO_ACCOUNTS_PER_USER) {
+			throw new Exception("The current user (id " + userId + ") already has " + currentUsersAccounts.size() + " opened accounts. A user can currently only have " + MAX_NO_ACCOUNTS_PER_USER + " account(s).");
 		}
 	}
 }

@@ -1,5 +1,6 @@
 package com.assignment.accountmgr;
 
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
 import java.util.List;
@@ -56,5 +57,21 @@ public class UserRepositoryTests {
 		// then
 		assertTrue(foundUser1.getId() == user1.getId());
 		assertTrue(foundUser2.getId() == user2.getId());
+	}	
+	
+	@Test
+	public void test_badUsername() {
+		// given
+		User user1 = new User("admin", "password");
+		User user2 = new User("user", "user");
+		entityManager.persist(user1);
+		entityManager.persist(user2);
+		entityManager.flush();
+
+		// when
+		User foundUser = userRepository.getUserForUsername("incorrect");
+		
+		// then
+		assertNull(foundUser);
 	}	
 }

@@ -19,6 +19,10 @@ public class AccountService {
 		
 	}
 	
+	public List<Account> getAllAccountsForUserId(Long userId){
+		return accountRepository.findAccountsForCustomerId(userId);
+	}
+	
 	public List<Account> getAllAccounts(){
 		return accountRepository.findAll();
 	}
