@@ -1,7 +1,13 @@
 package com.assignment.accountmgr.service;
 
+import java.time.Instant;
+import java.time.ZoneOffset;
+import java.time.temporal.TemporalUnit;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
+import java.util.TimeZone;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -32,18 +38,25 @@ public class AccountService {
 		Long customerId = account.getCustomerId();
 		List<Account> currentCustomerAccounts = accountRepository.findAccountsForCustomerId(customerId);
 		
-		// check that the provided account and date are valid.
+		// Check that the provided account and date are valid.
 		AccountUtils.validateAccountOpenDate(date);
 		AccountUtils.validateUserCanCreateAccount(account.getCustomerId(), account, currentCustomerAccounts);
 		
-		// set the correct create date on the account and save it in the database
-		// the saved account will be returned to the user.
+		// Set the correct create date on the account and save it in the database
+		// The saved account will be returned to the user.
 		account.setCreatedOn(date);
 		return accountRepository.save(account);
 	}
 	
 	public Account createAccount(Account account) throws Exception{
+		// Retrieve the current time, and add 2 Hours (convert to Bucharest timezone).
+		// The current implementatin hardcodes the GMT+2 timezone.
+		// TODO This could be refactored depending on the scale of the project, to address different timezones.
 		Date date = new Date(System.currentTimeMillis());
+		Calendar cal = Calendar.getInstance(); 	// creates calendar
+		cal.setTime(date);               		// sets calendar time/date
+		cal.add(Calendar.HOUR_OF_DAY, 2);      	// adds one hour
+		date = cal.getTime();                   // returns new date object plus one hour
 		return addAccountWithDate(account, date);
 	}
 	

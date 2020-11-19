@@ -33,6 +33,7 @@ public class AccountController {
 	@GetMapping()
 	public List<Account> getAllAccounts(@RequestParam(required = false) String username) throws Exception{
 		List<Account> accounts = null;
+		// if the username Query Param is not sent, will return all the accounts.
 		if (username == null) {
 			accounts = accountService.getAllAccounts();
 		}
@@ -49,6 +50,8 @@ public class AccountController {
 	@PostMapping()
 	public Account createAccount(@RequestBody Map<String, Object> params) {
 		try {
+			// The user id will need to be retrieved based on the username
+			// We will insert into the account database the user id
 			String customerName = (String)params.get("customerName");
 			Long balance = ((Number)params.get("balance")).longValue();
 			User user = userService.getUserByUsername(customerName);
@@ -67,6 +70,9 @@ public class AccountController {
 		}
 	}
 	
+	// Retrieve an account based on the account ID.
+	// This is not currently used, but will be needed when operations such as
+	// account transactions are added.  
 	@GetMapping("/{id}")
 	public ResponseEntity<Account> getAccount(@PathVariable(value="id") Long id) throws Exception{
 		Account account = accountService.getAccountById(id);
