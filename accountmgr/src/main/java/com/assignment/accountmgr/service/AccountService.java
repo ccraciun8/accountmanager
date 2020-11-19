@@ -1,13 +1,8 @@
 package com.assignment.accountmgr.service;
 
-import java.time.Instant;
-import java.time.ZoneOffset;
-import java.time.temporal.TemporalUnit;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.GregorianCalendar;
 import java.util.List;
-import java.util.TimeZone;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
