@@ -69,8 +69,8 @@ The Account Manager service (http://localhost:8081) exposes the following REST A
 |--------|----------------------|-------------------------------------------------------------------------------------------|-------------|
 | GET    | /accounts            | Will return all registered accounts (for all users)                                       | 200         |
 | GET    | /accounts?username=x | Will return all registered accounts for the provided user                                 | 200         |
-| GET    | /accounts/id         | Will return information for the provided account id                                       | 200         |
-| POST   | /accounts            | Will add a new account in the database. Receives the username and balance as parameters.  | 201, 400    |
+| GET    | /accounts/id         | Will return information for the provided account id                                       | 200, 400    |
+| POST   | /accounts            | Will add a new account in the database. Receives the username and balance as parameters.  | 200, 400    |
 
 # Adding a new account
 
