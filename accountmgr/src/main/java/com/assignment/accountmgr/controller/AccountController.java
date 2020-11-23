@@ -75,7 +75,13 @@ public class AccountController {
 	// account transactions are added.  
 	@GetMapping("/{id}")
 	public ResponseEntity<Account> getAccount(@PathVariable(value="id") Long id) throws Exception{
-		Account account = accountService.getAccountById(id);
-		return ResponseEntity.ok().body(account);
+		try {
+			Account account = accountService.getAccountById(id);
+			return ResponseEntity.ok().body(account);
+		}
+		catch(Exception ex) {
+			throw new ResponseStatusException(
+			           HttpStatus.BAD_REQUEST, ex.getMessage(), ex);
+		}
 	}
 }
