@@ -48,10 +48,10 @@ public class AccountService {
 		// The current implementatin hardcodes the GMT+2 timezone.
 		// TODO This could be refactored depending on the scale of the project, to address different timezones.
 		Date date = new Date(System.currentTimeMillis());
-		//Calendar cal = Calendar.getInstance(); 	// creates calendar
-		//cal.setTime(date);               		// sets calendar time/date
-		//cal.add(Calendar.HOUR_OF_DAY, 2);      	// adds one hour
-		//date = cal.getTime();                   // returns new date object plus one hour
+		Calendar cal = Calendar.getInstance(); 	// creates calendar
+		cal.setTime(date);               		// sets calendar time/date
+		cal.add(Calendar.HOUR_OF_DAY, 2);      	// adds two hours
+		date = cal.getTime();                   // returns new date object plus two hours
 		return addAccountWithDate(account, date);
 	}
 	

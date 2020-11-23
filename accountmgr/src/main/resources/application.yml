@@ -1,5 +1,8 @@
 server:
   port: 8081
+  error:
+    include-message: always
+    include-binding-errors: always
 spring:
   datasource:
     url: jdbc:postgresql://${POSTGRES_DB_SERVER}:5432/${POSTGRES_DB}?createDatabaseIfNotExist=true

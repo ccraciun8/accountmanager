@@ -53,10 +53,10 @@ public class Account {
 		this.createdOn = createdOn;
 	}
 
-	// The date is retrieved from the DB in a format similar to: "2020-11-18T15:36:51.457+0000"
+	// The date is retrieved from the DB in a format similar to: "2020-11-18T15:36:51.457+00:00"
 	// We will parse it back to a Date format in order to print it in a more readable format.
 	public String getFormattedDate() throws ParseException {
-		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ");
+		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSX");
 		Date date = dateFormat.parse(getCreatedOn());
 		
 		DateFormat newDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");

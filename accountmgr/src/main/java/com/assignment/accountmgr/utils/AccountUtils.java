@@ -40,7 +40,7 @@ public class AccountUtils {
 	    Calendar cal = Calendar.getInstance();
 	    // Set the input date in a calendar instance, in order to retrieve current day and hour
 	    cal.setTime(date);
-	    
+	
 	    // Retrieve day of week as an int
 	    // Starts from value 1 (Sunday) -> 2 (Monday) -> .. -> 7 (Saturday)
 	    int dayOfWeek = cal.get(Calendar.DAY_OF_WEEK);
@@ -54,6 +54,10 @@ public class AccountUtils {
 	    }
 	    
 	    Date currentDate = new Date();
+	    // add two hours, in order to switch to correct Bucharest timezone (GMT+2).
+		cal.setTime(currentDate);               		// sets calendar time/date
+		cal.add(Calendar.HOUR_OF_DAY, 2);      			// adds two hours
+		currentDate = cal.getTime();                    // returns new date object plus two hours
 	    if (currentDate.before(date)) {
 	    	throw new Exception("Cannot create accounts with 'future' dates.");
 	    }

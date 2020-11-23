@@ -89,7 +89,7 @@ public class AccountUtilsTests {
 				"10/11/2020 09:00:00", //Tuesday
 				"14/09/2020 16:59:59", //Monday
 				"30/10/2020 13:20:59", //Friday
-				"04/11/2020 15:01:10"  //Wednesday
+				"04/11/2020 16:01:10"  //Wednesday
 				);
 		for (String sDate : dates) {
 			Date date = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss").parse(sDate);
